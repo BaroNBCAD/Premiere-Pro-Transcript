@@ -31,7 +31,7 @@ Before running the setup, ensure you have the following installed:
 
 ### 1. Clone or Download
 
-Download this repository as a `.zip` and extract it, or clone it via Git:
+- Download this repository as a `.zip` and extract it, or clone it via Git:
 
 ### 2. Setup
 
@@ -55,4 +55,5 @@ MIT - Free to use.
 ---
 
 **Developed by DannyCAD**
+
 _Computing Science Student | Content Creator_

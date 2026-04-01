@@ -6,7 +6,7 @@ from datetime import timedelta
 # --- CONFIGURATION ---
 INPUT_DIR = "src"
 OUTPUT_DIR = "output"
-MODEL_SIZE = "small"
+MODEL_SIZE = "base"
 AUDIO_EXTENSIONS = ('.mp3', '.wav', '.m4a', '.flac', '.mp4')
 
 def format_timestamp(seconds):

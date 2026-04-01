@@ -35,16 +35,16 @@ Download this repository as a `.zip` and extract it, or clone it via Git:
 
 ### 2. Setup
 
-    **Windows**: windows-setup.bat
-    **Linux/Mac**: linux-setup.sh
+- **Windows**: windows-setup.bat
+- **Linux/Mac**: linux-setup.sh
 
 ### 3. Usage
 
-    - **Optional**: Open `run` with your text editor and select your AI model.
-    By default, it is `MODEL_SIZE = "base"`. #Options: 'tiny', 'base', 'small', 'medium', 'large-v3'
-    - Place your source files ('.mp3', '.wav', '.m4a', '.flac', '.mp4') into /src folder.
-    - In your terminal, run `./run`
-    - Your output will be found in /output folder.
+- **Optional**: Open `run` with your text editor and select your AI model.
+By default, it is `MODEL_SIZE = "base"`. #Options: 'tiny', 'base', 'small', 'medium', 'large-v3'
+- Place your source files ('.mp3', '.wav', '.m4a', '.flac', '.mp4') into /src folder.
+- In your terminal, run `./run`
+- Your output will be found in /output folder.
 
 ---
 

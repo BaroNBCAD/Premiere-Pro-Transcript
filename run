@@ -1,0 +1,69 @@
+#!/usr/bin/env ./venv/Scripts/python.exe
+import stable_whisper
+import os
+from datetime import timedelta
+
+# --- CONFIGURATION ---
+INPUT_DIR = "src"
+OUTPUT_DIR = "output"
+MODEL_SIZE = "small"
+AUDIO_EXTENSIONS = ('.mp3', '.wav', '.m4a', '.flac', '.mp4')
+
+def format_timestamp(seconds):
+    td = timedelta(seconds=seconds)
+    total_seconds = int(td.total_seconds())
+    hours, remainder = divmod(total_seconds, 3600)
+    minutes, seconds_flat = divmod(remainder, 60)
+    milliseconds = int(td.microseconds / 1000)
+    return f"{hours:02}:{minutes:02}:{seconds_flat:02},{milliseconds:03}"
+
+def process_file(model, file_path):
+    file_name = os.path.basename(file_path)
+    base_name = os.path.splitext(file_name)[0]
+    
+    output_path = os.path.join(OUTPUT_DIR, f"{base_name}.srt")
+    print(f"\n[Transcribing] {file_name}...")
+    result = model.transcribe(file_path, regroup=False)
+    
+    srt_content = ""
+    counter = 1
+    for segment in result.segments:
+        for word in segment.words:
+            start = format_timestamp(word.start)
+            end = format_timestamp(word.end)
+            text = word.word.strip()
+            srt_content += f"{counter}\n{start} --> {end}\n{text}\n\n"
+            counter += 1
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(srt_content)
+    
+    print(f"[Done] Output saved to: {output_path}")
+
+def main():
+    # Ensure BOTH directories exist
+    for folder in [INPUT_DIR, OUTPUT_DIR]:
+        if not os.path.exists(folder):
+            os.makedirs(folder)
+            print(f"Created folder: /{folder}")
+
+    files = [f for f in os.listdir(INPUT_DIR) if f.lower().endswith(AUDIO_EXTENSIONS)]
+    
+    if not files:
+        print(f"/{INPUT_DIR}: File(s) not found.")
+        return
+
+    print(f"Found {len(files)} files. Loading: '{MODEL_SIZE}' model...")
+    model = stable_whisper.load_model(MODEL_SIZE)
+
+    for file in files:
+        full_path = os.path.join(INPUT_DIR, file)
+        try:
+            process_file(model, full_path)
+        except Exception as e:
+            print(f"[Error] Skipping {file}: {e}")
+
+    print(f"\nCreated {len(files)} files in /{OUTPUT_DIR}.")
+
+if __name__ == "__main__":
+    main()

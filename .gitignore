@@ -1,0 +1,17 @@
+# Environments
+venv/
+.env
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# Project Specifics
+src/*
+!src/.gitkeep
+output/*
+!output/.gitkeep
+
+# System Files
+.DS_Store
+Thumbs.db

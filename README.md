@@ -35,8 +35,8 @@ Download this repository as a `.zip` and extract it, or clone it via Git:
 
 ### 2. Setup
 
-    - **Windows**: windows-setup.bat
-    - **Linux/Mac**: linux-setup.sh
+    **Windows**: windows-setup.bat
+    **Linux/Mac**: linux-setup.sh
 
 ### 3. Usage
 

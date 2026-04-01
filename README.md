@@ -54,6 +54,4 @@ MIT - Free to use.
 
 ---
 
-**Developed by DannyCAD**
-
-_Computing Science Student | Content Creator_
+**Developed by DannyCAD**  _Computing Science Student | Content Creator_
